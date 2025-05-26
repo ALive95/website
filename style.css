@@ -1,0 +1,205 @@
+/* Base styles - Dark Theme */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    overflow-x: hidden;
+}
+
+/* General section styles */
+section {
+    position: relative;
+    width: 100%;
+    max-width: 1250px;
+    padding: 40px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    background-color: #121212; /* Dark background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Style for transparent images */
+.transparent-img {
+    width: 300px; /* Adjust the image size */
+    height: auto;
+    position: relative;
+    z-index: 2; /* Ensure the image is above the background */
+}
+
+/* Section 1 with a unique image */
+section.section1::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('back_image1.png') no-repeat center center;
+    background-size: contain; /* Ensures image fills section */
+    background-position: right center;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Section 2 with a different image */
+section.section2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('back_image2.jpg') no-repeat center center;
+    background-size: contain;
+    background-position: right center;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Section 3 with another image */
+section.section3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('back_image3.jpg') no-repeat center center;
+    background-size: contain;
+    background-position: right center;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Content above the images */
+section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #ffffff; /* Make headings fully white */
+}
+
+/* Links */
+a {
+    color: #bb86fc; /* Soft purple for a modern look */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff79c6; /* Brighter color on hover */
+}
+
+/* Buttons (if you have them) */
+button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #555;
+}
+
+
+/* Center text */
+p {
+    text-align: justify;
+}
+
+/* Header styles */
+header {
+    background: #222;
+    color: rgb(186, 24, 24);
+    text-align: center;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+img {
+    max-width: 100%; /* Prevents them from exceeding the screen */
+    height: auto;
+}
+
+header, nav {
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #222;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #127806;
+    text-decoration: none;
+}
+
+
+/* Hero section */
+.hero {
+    background: linear-gradient(to right, #30bc2c, #0f5112);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Profile pic */
+.profile-pic {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

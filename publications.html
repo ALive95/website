@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publications - Lorenzo Liverani</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+      color: #d4d4d8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+      background-image: url('lavagna.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      backdrop-filter: blur(20px);
+      border-radius: 0px;
+      padding: 3rem 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(64, 64, 64, 0.3);
+    }
+
+   
+    h1 {        
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #d4b896, #e3d3bc, #e3c39c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      
+  /* Text stroke for contour */
+      -webkit-text-stroke: 1px black;  /* for Safari/Chrome */
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: linear-gradient(135deg, #404040, #2a2a2a, #1f1f1f);
+      color: #d4d4d8;
+      text-decoration: none;
+      border-radius: 0px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(64, 64, 64, 0.4);
+    }
+
+    nav a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      background: linear-gradient(135deg, #8b7355, #a0845c, #b8956b);
+      color: #1a1a1a;
+    }
+
+    .publications-section {
+      background: rgba(20, 20, 20, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 0px;
+      padding: 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(64, 64, 64, 0.3);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      background: linear-gradient(135deg,  #d4b896, #c4a880, #b8956b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .publications-list {
+      list-style: none;
+      counter-reset: publication-counter;
+    }
+
+    .publication-item {
+      counter-increment: publication-counter;
+      margin-bottom: 0.75rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, rgba(38, 38, 38, 0.8), rgba(26, 26, 26, 0.9));
+      border-radius: 0px;
+      border-left: 4px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(64, 64, 64, 0.2);
+    }
+
+    .publication-item::before {
+      content: counter(publication-counter);
+      position: absolute;
+      left: -12px;
+      top: 15px;
+      background: linear-gradient(135deg, #525252, #404040);
+      color: #f4f4f5;
+      width: 24px;
+      height: 24px;
+      border-radius: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(82, 82, 82, 0.5);
+    }
+
+    .publication-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+      border-left-color: #a0845c;
+      background: linear-gradient(135deg, rgba(56, 48, 40, 0.8), rgba(44, 38, 32, 0.9));
+    }
+
+    .publication-item:hover::before {
+      background: linear-gradient(135deg, #8b7355, #a0845c);
+      color: #1a1a1a;
+    }
+
+    .publication-content {
+      margin-left: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .publication-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .authors {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      line-height: 1.4;
+      color: #a1a1aa;
+    }
+
+    .authors b {
+      color: #f4f4f5;
+      font-weight: 700;
+    }
+
+    .publication-item:hover .authors b {
+      background: linear-gradient(135deg, #d4b896, #c4a880);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .title {
+      font-style: italic;
+      color: #d4d4cb;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+      line-height: 1.3;
+    }
+
+    .publication-item:hover .title {
+      color: #a0845c;
+    }
+
+    .journal {
+      font-weight: 600;
+      color: #d4d4d8;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    .publication-item:hover .journal {
+      color: #e6d5b8;
+    }
+
+    .publication-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .year-badge {
+      background: linear-gradient(135deg, #525252, #3f3f46);
+      color: #f4f4f5;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(82, 82, 82, 0.5);
+    }
+
+    .publication-item:hover .year-badge {
+      background: linear-gradient(135deg, #8b7355, #a0845c);
+      color: #1a1a1a;
+    }
+
+    .doi-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.8rem;
+      background: linear-gradient(135deg, #525252, #404040);
+      color: #f4f4f5;
+      text-decoration: none;
+      border-radius: 0px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(82, 82, 82, 0.5);
+    }
+
+    .doi-link:hover {
+      transform: translateY(-0.5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      background: linear-gradient(135deg, #8b7355, #a0845c);
+      color: #1a1a1a;
+    }
+
+    .status-badge {
+      background: linear-gradient(135deg, #71717a, #52525b);
+      color: #f4f4f5;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(113, 113, 122, 0.5);
+    }
+
+    .publication-item:hover .status-badge {
+      background: linear-gradient(135deg, #8b7355, #a0845c);
+      color: #1a1a1a;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      background: rgba(15, 15, 15, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 0px;
+      color: #71717a;
+      font-weight: 500;
+      border: 1px solid rgba(64, 64, 64, 0.3);
+    }
+
+    /* Subtle animated background elements */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(64, 64, 64, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(82, 82, 82, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(113, 113, 122, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .publications-section {
+        padding: 2rem;
+      }
+      
+      .publication-item {
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .publication-item::before {
+        left: -10px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+        top: 12px;
+      }
+
+      .publication-content {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .publication-meta {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>My Publications</h1>
+      <nav>
+        <a href="index.html">← Back to Home</a>
+      </nav>
+    </header>
+
+    <section class="publications-section">
+      <h2>Journal Articles</h2>
+      <ol class="publications-list">
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">T. Crin-Barat, <b>L. Liverani</b>, L.-Y. Shou, and E. Zuazua</div>
+              <div class="title">"Large-time asymptotics for hyperbolic systems with non-symmetric relaxation: An algorithmic approach"</div>
+              <div class="journal">Journal de Mathématiques Pures et Appliquées</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2025</span>
+              <span class="status-badge">To appear</span>
+              <a href="https://doi.org/10.48550/arXiv.2503.00236" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors"><b>L. Liverani</b>, Y. Mammeri, V. Pata and R. Quintanilla</div>
+              <div class="title">"On the linearized Whitham–Broer–Kaup system on bounded domains"</div>
+              <div class="journal">Proceedings of the Royal Society of Edinburgh: Section A Mathematics, vol. 155, pp. 104–123</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2025</span>
+              <a href="https://doi.org/10.1512/iumj.2023.72.9330" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">V. Felli, <b>L. Liverani</b>, and R. Ognibene</div>
+              <div class="title">"Quantitative spectral stability for the Neumann Laplacian in domains with small holes"</div>
+              <div class="journal">J. Funct. Anal., vol. 288, no. 6, Paper No. 110817</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2025</span>
+              <a href="https://doi.org/10.1016/j.jfa.2024.110817" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">F. Dell'Oro, <b>L. Liverani</b>, V. Pata, and R. Quintanilla</div>
+              <div class="title">"On the double Moore–Gibson–Thompson system of thermoviscoelasticity"</div>
+              <div class="journal">Studies in Applied Mathematics, vol. 154, no. 1, e12784</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2025</span>
+              <a href="https://doi.org/10.1111/sapm.12784" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">F. Dell'Oro, <b>L. Liverani</b>, V. Pata, and R. Quintanilla</div>
+              <div class="title">"Global attractors for Moore-Gibson-Thompson thermoelastic extensible beams and Berger plates"</div>
+              <div class="journal">Nonlinear Analysis Real World Applications, vol. 84, Paper No. 104298</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2025</span>
+              <a href="https://doi.org/10.1016/j.nonrwa.2024.104298" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">N. Bazarra, J. R. Fernández, <b>L. Liverani</b>, and R. Quintanilla</div>
+              <div class="title">"Analysis of a thermoelastic problem with the Moore-Gibson-Thompson microtemperatures"</div>
+              <div class="journal">J. Comput. Appl. Math., vol. 438, Paper No. 115571</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2024</span>
+              <a href="https://doi.org/10.1016/j.cam.2023.115571" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">P. F. Antonietti, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"Lack of superstable trajectories in linear viscoelasticity: A numerical approach"</div>
+              <div class="journal">Numer. Math., vol. 153, no. 4, pp. 611–633</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2023</span>
+              <a href="https://doi.org/10.1007/s00211-023-01351-1" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">F. Dell'Oro, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"On the regularized Moore-Gibson-Thompson equation"</div>
+              <div class="journal">Discrete Contin. Dyn. Syst. Ser. S</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2023</span>
+              <a href="https://doi.org/10.3934/dcdss.2023025" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">M. Conti, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"On the Moore-Gibson-Thompson equation with memory with nonconvex kernels"</div>
+              <div class="journal">Indiana Univ. Math. J., vol. 72, pp. 1–27</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2023</span>
+              <a href="https://doi.org/10.1512/iumj.2023.72.9330" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">M. Conti, <b>L. Liverani</b>, F. Dell'Oro, and V. Pata</div>
+              <div class="title">"Spectral analysis and stability of the Moore-Gibson-Thompson-Fourier model"</div>
+              <div class="journal">J. Dynam. Differential Equations</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2022</span>
+              <a href="https://doi.org/10.1007/s10884-022-10164-z" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">M. Conti, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"On the optimal decay rate of the weakly damped wave equation"</div>
+              <div class="journal">Commun. Pure Appl. Anal., vol. 21, pp. 3421–3424</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2022</span>
+              <a href="https://doi.org/10.3934/cpaa.2022107" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors"><b>L. Liverani</b> and R. Quintanilla</div>
+              <div class="title">"Thermoelasticity with temperature and microtemperatures with fading memory"</div>
+              <div class="journal">Math. Mech. Solids, vol. 28, pp. 1255–1273</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2022</span>
+              <a href="https://doi.org/10.1177/10812865221115359" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">M. Conti, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"Correction to 'Thermoelasticity with antidissipation'"</div>
+              <div class="journal">Discrete Contin. Dyn. Syst. Ser. S, vol. 15, pp. 2429–2431</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2022</span>
+              <a href="https://doi.org/10.3934/dcdss.2022125" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">M. Conti, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"Thermoelasticity with antidissipation"</div>
+              <div class="journal">Discrete Contin. Dyn. Syst. Ser. S, vol. 15, pp. 2173–2188</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2022</span>
+              <a href="https://doi.org/10.3934/dcdss.2022040" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">M. Conti, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"The MGT-Fourier model in the supercritical case"</div>
+              <div class="journal">J. Differential Equations, vol. 301, pp. 543–567</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2021</span>
+              <a href="https://doi.org/10.1016/j.jde.2021.08.030" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">M. Conti, <b>L. Liverani</b> and V. Pata</div>
+              <div class="title">"A note on the energy transfer in coupled differential systems"</div>
+              <div class="journal">Commun. Pure Appl. Anal., vol. 20, pp. 1821–1831</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2021</span>
+              <a href="https://doi.org/10.3934/cpaa.2021042" target="_blank" class="doi-link">📄 DOI</a>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Lorenzo Liverani</p>
+    </footer>
+  </div>
+</body>
+</html>
