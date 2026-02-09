@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematical Tools - Lorenzo Liverani</title>
-    <style>
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -19,32 +19,19 @@
             min-height: 100vh;
         }
 
-        /* Animated background elements */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(64, 64, 64, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(82, 82, 82, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(113, 113, 122, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 2rem;
         }
 
         header {
             text-align: center;
             margin-bottom: 4rem;
-            background: rgba(23, 23, 23, 0.9);
+            background-image: url('blackboard.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
             backdrop-filter: blur(20px);
             border-radius: 0px;
             padding: 3rem 2rem;
@@ -52,27 +39,19 @@
             border: 1px solid rgba(64, 64, 64, 0.3);
         }
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 2rem;
+   
+        h1 {        
+            font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #d4b896, #c4a880, #b8956b);
+            background: linear-gradient(135deg, #d4b896, #e3d3bc, #e3c39c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+      
+    /* Text stroke for contour */
+            -webkit-text-stroke: 1px black;  /* for Safari/Chrome */
         }
 
         nav a {
@@ -95,57 +74,212 @@
             color: #1a1a1a;
         }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: rgba(31, 30, 27, 0.6);
+        .publications-section {
+            background: rgba(20, 20, 20, 0.9);
             backdrop-filter: blur(20px);
-            margin: 2rem 0;
             border-radius: 0px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(64, 64, 64, 0.3);
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        h2 {
+            font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #d4b896, #c4a880, #b8956b);
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg,  #d4b896, #c4a880, #b8956b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
         }
 
-                /* make paragraphs fill the hero rectangle and justify text */
+        .publication-item {
+            counter-increment: publication-counter;
+            margin-bottom: 0.75rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(38, 38, 38, 0.8), rgba(26, 26, 26, 0.9));
+            border-radius: 0px;
+            border-left: 4px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(64, 64, 64, 0.2);
+        }
+
+        .publication-item::before {
+            content: counter(publication-counter);
+            position: absolute;
+            left: -12px;
+            top: 15px;
+            background: linear-gradient(135deg, #525252, #404040);
+            color: #f4f4f5;
+            width: 24px;
+            height: 24px;
+            border-radius: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(82, 82, 82, 0.5);
+        }
+
+        .publication-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+            border-left-color: #a0845c;
+            background: linear-gradient(135deg, rgba(56, 48, 40, 0.8), rgba(44, 38, 32, 0.9));
+        }
+
+        .publication-item:hover::before {
+            background: linear-gradient(135deg, #8b7355, #a0845c);
+            color: #1a1a1a;
+        }
+
+        .publication-content {
+            margin-left: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .publication-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .authors {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+            color: #a1a1aa;
+        }
+
+        .authors b {
+            color: #f4f4f5;
+            font-weight: 700;
+        }
+
+        .title {
+            font-style: italic;
+            color: #d4d4cb;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        .journal {
+            font-weight: 600;
+            color: #d4d4d8;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .publication-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .year-badge {
+            background: linear-gradient(135deg, #525252, #3f3f46);
+            color: #f4f4f5;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(82, 82, 82, 0.5);
+        }
+
+        .doi-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.8rem;
+            background: linear-gradient(135deg, #525252, #404040);
+            color: #f4f4f5;
+            text-decoration: none;
+            border-radius: 0px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(82, 82, 82, 0.5);
+        }
+
+        .doi-link:hover {
+            transform: translateY(-0.5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(135deg, #8b7355, #a0845c);
+            color: #1a1a1a;
+        }
+
+        .status-badge {
+            background: linear-gradient(135deg, #71717a, #52525b);
+            color: #f4f4f5;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(113, 113, 122, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 0px;
+            color: #71717a;
+            font-weight: 500;
+            border: 1px solid rgba(64, 64, 64, 0.3);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(64, 64, 64, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(82, 82, 82, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(113, 113, 122, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Tools-specific tweaks (keep layout from original tools.html) */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: rgba(20,20,20,0.9);
+            backdrop-filter: blur(20px);
+            margin: 2rem 0;
+            border-radius: 0px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(64, 64, 64, 0.3);
+        }
+
         .hero p {
             font-size: 1.05rem;
             color: #94a3b8;
-            width: 100%;         /* allow full width inside the hero */
-            margin: 1rem 0 1rem 1rem;  /* keep vertical spacing */
             line-height: 1.7;
-            text-align: justify; /* optional: makes long lines look nicer */
-            padding-right: 2rem; /* give a little room for the right-aligned citation */
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
-
-        .citation {
-            display: block;
-            max-width: 80%;
-            margin: 0.25rem auto 0 auto;  /* centers the block */
-            text-align: right;
-            font-style: italic;
-            color: #cbd5e1;
-            margin-top: 0.2rem;
-        }
-
-
-        /* clear floats inside .hero so layout stays stable */
-        .hero::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
 
         .tools-grid {
             display: grid;
@@ -155,21 +289,22 @@
         }
 
         .tool-card {
-            background: rgba(23, 23, 23, 0.9);
-            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(38, 38, 38, 0.8), rgba(26, 26, 26, 0.9));
             border-radius: 0px;
             padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(64, 64, 64, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(64, 64, 64, 0.2);
             transition: all 0.3s ease;
             text-decoration: none;
             display: block;
+            color: inherit;
         }
 
         .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-            border-color: rgba(212, 184, 150, 0.5);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+            border-left-color: #a0845c;
+            background: linear-gradient(135deg, rgba(56, 48, 40, 0.8), rgba(44, 38, 32, 0.9));
         }
 
         .tool-card h2 {
@@ -192,18 +327,18 @@
         .tool-status {
             display: inline-block;
             padding: 0.4rem 1rem;
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(34, 197, 94, 0.06));
             color: #4ade80;
             border-radius: 0px;
             font-size: 0.85rem;
             font-weight: 600;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            border: 1px solid rgba(34, 197, 94, 0.15);
         }
 
         .tool-status.coming-soon {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.1));
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(251, 191, 36, 0.06));
             color: #fbbf24;
-            border-color: rgba(251, 191, 36, 0.3);
+            border-color: rgba(251, 191, 36, 0.15);
         }
 
         .tool-tags {
@@ -222,46 +357,45 @@
             border: 1px solid rgba(64, 64, 64, 0.6);
         }
 
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding: 2rem;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 0px;
-            color: #94a3b8;
-            font-weight: 500;
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        footer a {
-            color: #d4d4d8;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer a:hover {
-            color: #d4b896;
-        }
-
         @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                gap: 1rem;
+            .container {
+                padding: 1rem;
             }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .hero h1 {
+      
+            h1 {
                 font-size: 2rem;
             }
+      
+            h2 {
+                font-size: 1.75rem;
+            }
+      
+            .publications-section {
+                padding: 2rem;
+            }
+      
+            .publication-item {
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+            }
+      
+            .publication-item::before {
+                left: -10px;
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+                top: 12px;
+            }
 
-            .hero {
-                padding: 3rem 1rem;
+            .publication-content {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .publication-meta {
+                align-items: flex-start;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
 
             .tools-grid {

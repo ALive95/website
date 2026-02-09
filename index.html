@@ -98,6 +98,57 @@
         color: #1a1a1a;
         }
 
+        nav li {
+            position: relative;
+        }
+
+        nav .dropdown {
+            position: relative;
+        }
+
+        nav .dropdown > a::after {
+            content: ' ▼';
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+        }
+
+        nav .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(135deg, #404040, #2a2a2a, #1f1f1f);
+            border: 1px solid rgba(64, 64, 64, 0.4);
+            border-radius: 0px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            min-width: 180px;
+            list-style: none;
+            margin-top: 0;
+            padding: 0.5rem 0;
+            z-index: 1000;
+        }
+
+        nav .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        nav .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            margin: 0;
+            color: #d4d4d8;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        nav .dropdown-menu a:hover {
+            background: linear-gradient(135deg, #8b7355, #a0845c, #b8956b);
+            color: #1a1a1a;
+            box-shadow: none;
+            transform: none;
+            padding-left: 1.8rem;
+        }
+
         .hero {
             text-align: center;
             padding: 2rem 0;
@@ -364,8 +415,13 @@
                 <h1>Lorenzo Liverani</h1>
                 <nav>
                     <ul>
-                        <li><a href="#publications">Research</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="#">Home</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#publications">Research</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </li>
                         <li><a href="publications.html">Publications</a></li>
                         <li><a href="CV.html">CV</a></li>
                         <li><a href="tools.html">Tools</a></li>
