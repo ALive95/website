@@ -100,7 +100,7 @@
     }
 
     .publication-item {
-      counter-increment: publication-counter;
+      counter-increment: publication-counter -1;
       margin-bottom: 0.75rem;
       padding: 1rem;
       background: linear-gradient(135deg, rgba(38, 38, 38, 0.8), rgba(26, 26, 26, 0.9));
@@ -344,7 +344,7 @@
 
     <section class="publications-section">
       <h2>Journal Articles</h2>
-      <ol class="publications-list">
+      <ol class="publications-list" style="counter-reset: publication-counter 19;">
 
         <li class="publication-item">
           <div class="publication-content">
@@ -397,7 +397,7 @@
             </div>
             <div class="publication-meta">
               <span class="year-badge">2025</span>
-              <a href="https://doi.org/10.1512/iumj.2023.72.9330" target="_blank" class="doi-link">📄 PAPER</a>
+              <a href="https://doi.org/10.1017/prm.2023.85" target="_blank" class="doi-link">📄 PAPER</a>
             </div>
           </div>
         </li>
@@ -602,7 +602,7 @@
 
     <section class="publications-section">
       <h2>Preprints</h2>
-      <ol class="publications-list">
+      <ol class="publications-list" style="counter-reset: publication-counter 7;">
 
         <li class="publication-item">
           <div class="publication-content">
@@ -650,13 +650,27 @@
         <li class="publication-item">
           <div class="publication-content">
             <div class="publication-text">
-              <div class="authors"><b>L. Liverani</b>, M. Steynberg, and E. Zuazua</div>
+              <div class="authors"><b>L. Liverani</b>, and E. Zuazua</div>
               <div class="title">"HYCO: Hybrid-Cooperative Learning for Data-Driven PDE Modeling"</div>
               <div class="journal">ArXiv</div>
             </div>
             <div class="publication-meta">
               <span class="year-badge">2026</span>
               <a href="https://doi.org/10.48550/arXiv.2509.14123" target="_blank" class="doi-link">📄 PAPER</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="publication-content">
+            <div class="publication-text">
+              <div class="authors">D. Lopez-Montero, <b>L. Liverani</b>, E. Zuazua, and X. Kobeleva</div>
+              <div class="title">"Balancing data fidelity and interpretability of whole-brain dynamics via hybrid generative modeling"</div>
+              <div class="journal">Submitted for review</div>
+            </div>
+            <div class="publication-meta">
+              <span class="year-badge">2026</span>
+              <span class="status-badge">Under Review</span>
             </div>
           </div>
         </li>
