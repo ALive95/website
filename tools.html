@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematical Tools - Lorenzo Liverani</title>
+    <link rel="stylesheet" href="theme.css">
+    <script src="theme.js"></script>
         <style>
         * {
             margin: 0;
@@ -12,83 +14,62 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            color: #d4d4d8;
+            font-family: var(--font-body);
+            font-size: 1.0625rem;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem 2rem;
         }
 
         header {
             text-align: center;
-            margin-bottom: 4rem;
-            background-image: url('blackboard.jpg');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            backdrop-filter: blur(20px);
+            margin-bottom: 2rem;
+            background: var(--panel);
+            backdrop-filter: blur(10px);
             border-radius: 0px;
-            padding: 3rem 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(64, 64, 64, 0.3);
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 10px var(--shadow);
+            border: 1px solid var(--border);
         }
 
-   
-        h1 {        
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #d4b896, #e3d3bc, #e3c39c);
+        h1 {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: var(--accent-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-      
-    /* Text stroke for contour */
-            -webkit-text-stroke: 1px black;  /* for Safari/Chrome */
-        }
-
-        nav a {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: linear-gradient(135deg, #404040, #2a2a2a, #1f1f1f);
-            color: #d4d4d8;
-            text-decoration: none;
-            border-radius: 0px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(64, 64, 64, 0.4);
-        }
-
-        nav a:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(135deg, #8b7355, #a0845c, #b8956b);
-            color: #1a1a1a;
         }
 
         .publications-section {
-            background: rgba(20, 20, 20, 0.9);
+            background: var(--panel);
             backdrop-filter: blur(20px);
             border-radius: 0px;
-            padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(64, 64, 64, 0.3);
+            padding: 2rem;
+            box-shadow: 0 20px 40px var(--shadow);
+            border: 1px solid var(--border);
         }
 
         h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
+            font-family: var(--font-display);
+            font-size: 1.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 1.5rem;
             text-align: center;
-            background: linear-gradient(135deg,  #d4b896, #c4a880, #b8956b);
+            background: var(--accent-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -98,14 +79,13 @@
             counter-increment: publication-counter;
             margin-bottom: 0.75rem;
             padding: 1rem;
-            background: linear-gradient(135deg, rgba(38, 38, 38, 0.8), rgba(26, 26, 26, 0.9));
+            background: var(--card);
             border-radius: 0px;
             border-left: 4px solid transparent;
             background-clip: padding-box;
             position: relative;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(64, 64, 64, 0.2);
+            box-shadow: 0 4px 6px var(--shadow);
+            border: 1px solid var(--border);
         }
 
         .publication-item::before {
@@ -113,8 +93,8 @@
             position: absolute;
             left: -12px;
             top: 15px;
-            background: linear-gradient(135deg, #525252, #404040);
-            color: #f4f4f5;
+            background: var(--badge);
+            color: var(--badge-text);
             width: 24px;
             height: 24px;
             border-radius: 0px;
@@ -123,21 +103,11 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.75rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(82, 82, 82, 0.5);
+            box-shadow: 0 4px 8px var(--shadow);
+            border: 1px solid var(--border-strong);
         }
 
-        .publication-item:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
-            border-left-color: #a0845c;
-            background: linear-gradient(135deg, rgba(56, 48, 40, 0.8), rgba(44, 38, 32, 0.9));
-        }
 
-        .publication-item:hover::before {
-            background: linear-gradient(135deg, #8b7355, #a0845c);
-            color: #1a1a1a;
-        }
 
         .publication-content {
             margin-left: 0.75rem;
@@ -156,17 +126,17 @@
             font-size: 1rem;
             margin-bottom: 0.25rem;
             line-height: 1.4;
-            color: #a1a1aa;
+            color: var(--text-muted);
         }
 
         .authors b {
-            color: #f4f4f5;
+            color: var(--text);
             font-weight: 700;
         }
 
         .title {
             font-style: italic;
-            color: #d4d4cb;
+            color: var(--text-soft);
             margin-bottom: 0.25rem;
             font-size: 0.95rem;
             line-height: 1.3;
@@ -174,7 +144,7 @@
 
         .journal {
             font-weight: 600;
-            color: #d4d4d8;
+            color: var(--text);
             margin-bottom: 0;
             font-size: 0.9rem;
         }
@@ -188,14 +158,14 @@
         }
 
         .year-badge {
-            background: linear-gradient(135deg, #525252, #3f3f46);
-            color: #f4f4f5;
+            background: var(--badge);
+            color: var(--badge-text);
             padding: 0.2rem 0.6rem;
             border-radius: 0px;
             font-size: 0.8rem;
             font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(82, 82, 82, 0.5);
+            box-shadow: 0 2px 4px var(--shadow);
+            border: 1px solid var(--border-strong);
         }
 
         .doi-link {
@@ -203,45 +173,45 @@
             align-items: center;
             gap: 0.4rem;
             padding: 0.35rem 0.8rem;
-            background: linear-gradient(135deg, #525252, #404040);
-            color: #f4f4f5;
+            background: var(--badge);
+            color: var(--badge-text);
             text-decoration: none;
             border-radius: 0px;
             font-weight: 600;
             font-size: 0.8rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(82, 82, 82, 0.5);
+            box-shadow: 0 2px 4px var(--shadow);
+            border: 1px solid var(--border-strong);
         }
 
         .doi-link:hover {
             transform: translateY(-0.5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(135deg, #8b7355, #a0845c);
-            color: #1a1a1a;
+            box-shadow: 0 4px 8px var(--shadow);
+            background: var(--btn-hover);
+            color: var(--btn-hover-text);
         }
 
         .status-badge {
-            background: linear-gradient(135deg, #71717a, #52525b);
-            color: #f4f4f5;
+            background: var(--badge);
+            color: var(--badge-text);
             padding: 0.2rem 0.6rem;
             border-radius: 0px;
             font-size: 0.8rem;
             font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(113, 113, 122, 0.5);
+            box-shadow: 0 2px 4px var(--shadow);
+            border: 1px solid var(--border-strong);
         }
 
         footer {
             text-align: center;
-            margin-top: 4rem;
-            padding: 2rem;
-            background: rgba(15, 15, 15, 0.9);
+            margin-top: 2rem;
+            padding: 1.25rem;
+            background: var(--panel);
             backdrop-filter: blur(20px);
             border-radius: 0px;
-            color: #71717a;
+            color: var(--text-muted);
             font-weight: 500;
-            border: 1px solid rgba(64, 64, 64, 0.3);
+            border: 1px solid var(--border);
         }
 
         body::before {
@@ -260,40 +230,20 @@
         }
 
         /* Tools-specific tweaks (keep layout from original tools.html) */
-        .hero {
-            text-align: center;
-            padding: 3rem 0;
-            background: rgba(20,20,20,0.9);
-            backdrop-filter: blur(20px);
-            margin: 2rem 0;
-            border-radius: 0px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(64, 64, 64, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.05rem;
-            color: #94a3b8;
-            line-height: 1.7;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
 
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
+            gap: 1rem;
+            margin: 1.5rem 0;
         }
 
         .tool-card {
-            background: linear-gradient(135deg, rgba(38, 38, 38, 0.8), rgba(26, 26, 26, 0.9));
+            background: var(--card);
             border-radius: 0px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(64, 64, 64, 0.2);
+            padding: 1.75rem;
+            box-shadow: 0 4px 6px var(--shadow);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
             text-decoration: none;
             display: block;
@@ -302,23 +252,23 @@
 
         .tool-card:hover {
             transform: translateY(-1px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
-            border-left-color: #a0845c;
-            background: linear-gradient(135deg, rgba(56, 48, 40, 0.8), rgba(44, 38, 32, 0.9));
+            box-shadow: 0 12px 24px var(--shadow);
+            border-left-color: var(--accent-hover);
+            background: var(--card-hover);
         }
 
         .tool-card h2 {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #d4b896, #c4a880, #b8956b);
+            background: var(--accent-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .tool-card p {
-            color: #cbd5e1;
+            color: var(--text-soft);
             font-size: 1.05rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -328,7 +278,7 @@
             display: inline-block;
             padding: 0.4rem 1rem;
             background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(34, 197, 94, 0.06));
-            color: #4ade80;
+            color: var(--ok-text);
             border-radius: 0px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -337,7 +287,7 @@
 
         .tool-status.coming-soon {
             background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(251, 191, 36, 0.06));
-            color: #fbbf24;
+            color: var(--warn-text);
             border-color: rgba(251, 191, 36, 0.15);
         }
 
@@ -350,16 +300,16 @@
 
         .tool-tag {
             padding: 0.3rem 0.8rem;
-            background: rgba(64, 64, 64, 0.4);
+            background: var(--border-strong);
             border-radius: 0px;
             font-size: 0.85rem;
-            color: #94a3b8;
-            border: 1px solid rgba(64, 64, 64, 0.6);
+            color: var(--text-muted);
+            border: 1px solid var(--border-strong);
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 0 1rem 1rem;
             }
       
             h1 {
@@ -407,22 +357,44 @@
                 padding: 2rem;
             }
         }
+
+        .page-title {
+            text-align: center;
+            padding: 0 0 1.5rem 0;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Mathematical Tools</h1>
-                <nav>
-                    <a href="index.html">← Back to Home</a>
+        <header class="site-header">
+            <div class="site-header-inner">
+                <h1><a href="index.html">Lorenzo Liverani</a></h1>
+                <nav class="site-nav">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="index.html">Home</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="index.html#publications">Research</a></li>
+                                <li><a href="index.html#contact">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="teaching.html">Teaching</a></li>
+                        <li><a href="CV.html">CV</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
                 </nav>
+            </div>
         </header>
 
-        <div class="hero">
-            <p>
-            Here I have collected some useful mathematical tools 
-            </p>
+        <div class="page-title">
+            <h1>Mathematical Tools</h1>
         </div>
+
 
         <div class="tools-grid">
             <a href="routh-hurwitz.html" class="tool-card">

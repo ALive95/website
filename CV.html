@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lorenzo Liverani - Curriculum Vitae</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <script src="theme.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,46 +15,31 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            color: #d4b896;
+            font-family: var(--font-body);
+            font-size: 1.0625rem;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--accent);
             min-height: 100vh;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 60px;
+            padding: 0 2rem 2rem;
             position: relative;
         }
 
-        nav a {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: linear-gradient(135deg, #404040, #2a2a2a, #1f1f1f);
-            color: #d4d4d8;
-            text-decoration: none;
-            border-radius: 0px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(64, 64, 64, 0.4);
-        }
-
-        nav a:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(135deg, #8b7355, #a0845c, #b8956b);
-            color: #1a1a1a;
+        /* The CV text keeps its narrow reading measure; only the site header
+           spans the full width so its nav matches the other pages. */
+        .cv-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .download-pdf {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: linear-gradient(135deg, #404040, #2a2a2a, #1f1f1f);
-            color: #d4d4d8;
+            background: var(--btn);
+            color: var(--text);
             padding: 12px 20px;
             border-radius: 0px;
             text-decoration: none;
@@ -61,22 +48,33 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px var(--shadow);
             transition: all 0.3s ease;
             z-index: 1000;
         }
 
         .download-pdf:hover {
             transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(135deg, #8b7355, #a0845c, #b8956b);
-            color: #1a1a1a;
+            box-shadow: 0 8px 25px var(--shadow);
+            background: var(--btn-hover);
+            color: var(--btn-hover-text);
+        }
+
+        .site-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: var(--panel);
+            backdrop-filter: blur(10px);
+            border-radius: 0px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 10px var(--shadow);
+            border: 1px solid var(--border);
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #000;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--border-strong);
             padding-bottom: 20px;
         }
 
@@ -88,7 +86,7 @@
         }
         
         .contact-info a {
-            color: #d4b896;           /* Gold color */
+            color: var(--accent);           /* Gold color */
             text-decoration: underline;
             font-weight: bold;
             transition: color 0.2s;
@@ -103,16 +101,17 @@
         }
 
         .section {
-            margin-bottom: 35px;
+            margin-bottom: 22px;
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: bold;
+            font-family: var(--font-display);
+            font-size: 19px;
+            font-weight: 500;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #000;
+            letter-spacing: 0.06em;
+            border-bottom: 1px solid var(--border-strong);
             padding-bottom: 5px;
         }
 
@@ -141,13 +140,13 @@
 
         .institution {
             font-style: italic;
-            color: rgb(225, 221, 215);
+            color: var(--text-soft);
             margin-bottom: 3px;
         }
 
         .details {
             font-size: 14px;
-            color: #999a94;
+            color: var(--text-muted);
         }
 
         .publication {
@@ -169,11 +168,11 @@
             font-weight: 900;
             font-size: 0.9em;
             margin-right: 0.8em;
-            box-shadow: 0 1px 5px rgba(238, 90, 36, 0.4), 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 1px 5px rgba(238, 90, 36, 0.4), 0 2px 8px var(--shadow);
             border: 2px solid rgba(255, 255, 255, 0.2);
             position: relative;
             transition: all 0.3s ease;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px var(--shadow);
         }
 
         .pub-number::before {
@@ -190,21 +189,14 @@
             transition: opacity 0.3s ease;
         }
 
-        .publication:hover .pub-number {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 10px rgba(238, 90, 36, 0.6), 0 4px 8px rgba(0,0,0,0.4);
-        }
 
-        .publication:hover .pub-number::before {
-            opacity: 1;
-        }
         .pub-authors {
             font-weight: normal;
         }
 
         .pub-title {
             font-style: italic;
-            color: #d4d4d8;
+            color: var(--text);
         }
 
         .pub-journal {
@@ -232,7 +224,7 @@
 
         .award-description {
             font-size: 14px;
-            color: #999a94;
+            color: var(--text-muted);
             margin-top: 2px;
         }
 
@@ -252,12 +244,12 @@
 
         .conf-title {
             font-weight: bold;
-            color: #d4d4d8;
+            color: var(--text);
         }
 
         .conf-talk {
             font-style: italic;
-            color: #999a94;
+            color: var(--text-muted);
         }
 
         .submitted-section {
@@ -278,9 +270,29 @@
                 padding: 20px;
                 font-size: 12px;
             }
+
+            .cv-content {
+                max-width: none;
+            }
             
-            .download-pdf {
+            .download-pdf,
+            .site-nav,
+            .theme-toggle {
                 display: none;
+            }
+
+            .site-header {
+                background: none;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin-bottom: 20px;
+            }
+
+            .site-header h1 {
+                background: none;
+                -webkit-text-fill-color: #000;
+                color: #000;
             }
             
             .section {
@@ -295,7 +307,7 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 20px;
+                padding: 0 1rem 1rem;
                 font-size: 14px;
             }
             
@@ -318,22 +330,35 @@
     </style>
 </head>
 <body>
-    <nav>
     <a href="#" class="download-pdf" onclick="downloadPDF()">
         <i class="fas fa-file-pdf"></i>
         Download PDF
     </a>
-    </nav>
-    
-    <nav>
-    <a href="index.html" class="download-pdf" style="top: 60px;  margin-top: 16px;">
-        <i class="fas fa-home"></i>
-        Back to Home
-    </a>
-    </nav>
+
+    <header class="site-header">
+            <div class="site-header-inner">
+                <h1><a href="index.html">Lorenzo Liverani</a></h1>
+                <nav class="site-nav">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="index.html">Home</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="index.html#publications">Research</a></li>
+                                <li><a href="index.html#contact">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="teaching.html">Teaching</a></li>
+                        <li><a href="CV.html">CV</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <div class="cv-content">
 
     <div class="header">
-        <h1 class="name">LORENZO LIVERANI</h1>
         <div class="contact-info">
             <div><i class="fas fa-envelope"></i> lorenzo.liverani@univie.ac.at</div>
             <div><i class="fas fa-graduation-cap"></i><a href="https://scholar.google.com/citations?hl=it&user=1Ui_p_wAAAAJ">Google Scholar Profile</a></div>
@@ -876,6 +901,8 @@
         <h2 class="section-title">Commissions of Trust</h2>
         <div class="details">I have served as a referee for several international journals, including Journal of Differential Equations, Numerische Mathematik, Neural Networks, Journal of Dynamics and Differential Equations, Pure and Applied Analysis, Asymptotic Analysis, and Annals of Mathematical Physics.</div>
     </section>
+
+    </div><!-- /.cv-content -->
 
     <script>
         function downloadPDF() {

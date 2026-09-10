@@ -7,6 +7,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="theme.css">
+    <script src="theme.js"></script>
     <style>
         * {
             margin: 0;
@@ -15,10 +17,11 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            color: #d4d4d8;
+            font-family: var(--font-body);
+            font-size: 1.0625rem;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
         }
 
@@ -40,107 +43,70 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 2rem 2rem;
         }
 
         header {
             text-align: center;
-            margin-bottom: 4rem;
-            background: rgba(23, 23, 23, 0.9);
+            margin-bottom: 2rem;
+            background: var(--panel);
             backdrop-filter: blur(10px);
             border-radius: 0px;
-            padding: 3rem 2rem;
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(64, 64, 64, 0.3);
-        }
-
-        header .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #d4b896, #c4a880, #b8956b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0;
-            letter-spacing: -0.02em;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: linear-gradient(135deg, #404040, #2a2a2a, #1f1f1f);
-            color: #d4d4d8;
-            text-decoration: none;
-            border-radius: 0px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(64, 64, 64, 0.4);
-        }
-
-        nav a:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(135deg, #8b7355, #a0845c, #b8956b);
-            color: #1a1a1a;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 10px var(--shadow);
+            border: 1px solid var(--border);
         }
 
         .page-title {
             text-align: center;
-            padding: 3rem 0 2rem 0;
+            padding: 1rem 0 1.5rem 0;
         }
 
         .page-title h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #d4b896, #c4a880, #b8956b);
+            font-family: var(--font-display);
+            font-size: 2.1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: var(--accent-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
-            letter-spacing: -0.02em;
         }
 
         .info-box {
-            background: linear-gradient(135deg, rgba(51, 65, 85, 0.6), rgba(30, 41, 59, 0.8));
-            border-left: 4px solid #d4b896;
+            background: var(--card);
+            border-left: 4px solid var(--accent);
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0px;
-            color: #cbd5e1;
-            border: 1px solid rgba(148, 163, 184, 0.1);
+            color: var(--text-soft);
+            border: 1px solid var(--border);
         }
 
         .info-box strong {
-            color: #d4b896;
+            color: var(--accent);
         }
 
         section {
             margin: 2rem 0;
-            padding: 2.5rem;
-            background: rgba(23, 23, 23, 0.9);
+            padding: 1.75rem;
+            background: var(--panel);
             backdrop-filter: blur(20px);
             border-radius: 0px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(64, 64, 64, 0.3);
+            box-shadow: 0 20px 40px var(--shadow);
+            border: 1px solid var(--border);
         }
 
         h2 {
-            color: #d4b896;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
         }
 
         .form-group {
@@ -151,16 +117,16 @@
             display: block;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #cbd5e1;
+            color: var(--text-soft);
         }
 
         input[type="number"], input[type="text"] {
             width: 100%;
             padding: 0.75rem;
-            background: rgba(31, 30, 27, 0.6);
-            border: 1px solid rgba(64, 64, 64, 0.6);
+            background: var(--input-bg);
+            border: 1px solid var(--border-strong);
             border-radius: 0px;
-            color: #d4d4d8;
+            color: var(--text);
             font-size: 14px;
             font-family: 'Courier New', monospace;
             transition: all 0.3s ease;
@@ -168,8 +134,8 @@
 
         input:focus {
             outline: none;
-            border-color: #d4b896;
-            background: rgba(31, 30, 27, 0.8);
+            border-color: var(--accent);
+            background: var(--input-bg);
         }
 
         .coefficient-inputs {
@@ -180,38 +146,38 @@
         }
 
         .coeff-group {
-            background: linear-gradient(135deg, rgba(51, 65, 85, 0.4), rgba(30, 41, 59, 0.6));
+            background: var(--card);
             padding: 1.5rem;
             border-radius: 0px;
-            border: 1px solid rgba(64, 64, 64, 0.4);
+            border: 1px solid var(--border-strong);
         }
 
         .coeff-title {
             font-weight: 600;
-            color: #d4b896;
+            color: var(--accent);
             margin-bottom: 1rem;
             font-size: 1.1rem;
         }
 
         button {
-            background: linear-gradient(135deg, #404040, #2a2a2a, #1f1f1f);
-            color: #d4d4d8;
+            background: var(--btn);
+            color: var(--text);
             padding: 0.75rem 2rem;
-            border: 1px solid rgba(64, 64, 64, 0.4);
+            border: 1px solid var(--border-strong);
             border-radius: 0px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             margin-top: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px var(--shadow);
         }
 
         button:hover {
             transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(135deg, #8b7355, #a0845c, #b8956b);
-            color: #1a1a1a;
+            box-shadow: 0 8px 25px var(--shadow);
+            background: var(--btn-hover);
+            color: var(--btn-hover-text);
         }
 
         button:disabled {
@@ -241,21 +207,21 @@
         }
 
         .polynomial-display {
-            background: linear-gradient(135deg, rgba(51, 65, 85, 0.6), rgba(30, 41, 59, 0.8));
+            background: var(--card);
             padding: 2rem;
             border-radius: 0px;
             margin: 1.5rem 0;
-            border: 2px solid #d4b896;
-            color: #cbd5e1;
+            border: 2px solid var(--accent);
+            color: var(--text-soft);
         }
 
         .condition {
-            background: linear-gradient(135deg, rgba(51, 65, 85, 0.4), rgba(30, 41, 59, 0.6));
+            background: var(--card);
             padding: 1.5rem;
             margin: 1rem 0;
             border-radius: 0px;
-            border-left: 4px solid #4ade80;
-            border: 1px solid rgba(64, 64, 64, 0.4);
+            border-left: 4px solid var(--ok-text);
+            border: 1px solid var(--border-strong);
         }
 
         .error {
@@ -264,53 +230,43 @@
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0px;
-            color: #fca5a5;
+            color: var(--error-text);
         }
 
         footer {
             text-align: center;
-            margin-top: 4rem;
-            padding: 2rem;
-            background: rgba(15, 23, 42, 0.8);
+            margin-top: 2rem;
+            padding: 1.25rem;
+            background: var(--panel);
             backdrop-filter: blur(20px);
             border-radius: 0px;
-            color: #94a3b8;
+            color: var(--text-muted);
             font-weight: 500;
-            border: 1px solid rgba(148, 163, 184, 0.1);
+            border: 1px solid var(--border);
         }
 
         footer a {
-            color: #d4d4d8;
+            color: var(--text);
             text-decoration: none;
             font-weight: 600;
         }
 
         footer a:hover {
-            color: #d4b896;
+            color: var(--accent);
         }
 
         code {
-            background: rgba(64, 64, 64, 0.4);
+            background: var(--border-strong);
             padding: 2px 6px;
             border-radius: 0px;
             font-family: 'Courier New', monospace;
-            color: #fbbf24;
+            color: var(--warn-text);
         }
 
         @media (max-width: 768px) {
-            header .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .page-title h1 {
-                font-size: 2rem;
+        .page-title h1 {
+                font-size: 1.6rem;
             }
 
             section {
@@ -325,14 +281,20 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="header-container">
-                <h1>Lorenzo Liverani</h1>
-                <nav>
+        <header class="site-header">
+            <div class="site-header-inner">
+                <h1><a href="index.html">Lorenzo Liverani</a></h1>
+                <nav class="site-nav">
                     <ul>
-                        <li><a href="index.html#publications">Research</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="index.html">Home</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="index.html#publications">Research</a></li>
+                                <li><a href="index.html#contact">Contact</a></li>
+                            </ul>
+                        </li>
                         <li><a href="publications.html">Publications</a></li>
+                        <li><a href="teaching.html">Teaching</a></li>
                         <li><a href="CV.html">CV</a></li>
                         <li><a href="tools.html">Tools</a></li>
                     </ul>
