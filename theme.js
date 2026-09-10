@@ -32,7 +32,49 @@
         '<path d="M20.5 14.8A8.6 8.6 0 0 1 9.2 3.5a8.6 8.6 0 1 0 11.3 11.3z"/>' +
         '</svg>';
 
+    /* On touch there is no :hover, so tapping a menu parent just followed its
+       link and the submenu was unreachable. First tap opens the menu, second
+       tap follows the link. */
+    function initNavDropdowns() {
+        var parents = document.querySelectorAll('.site-nav .dropdown > a');
+        if (!parents.length) return;
+
+        function closeAll() {
+            var open = document.querySelectorAll('.site-nav .dropdown.open');
+            for (var i = 0; i < open.length; i++) {
+                open[i].classList.remove('open');
+            }
+        }
+
+        function bind(link) {
+            link.addEventListener('click', function (e) {
+                if (window.matchMedia('(hover: hover)').matches) return;
+                var li = link.parentNode;
+                if (li.classList.contains('open')) return;
+                e.preventDefault();
+                closeAll();
+                li.classList.add('open');
+            });
+        }
+
+        for (var i = 0; i < parents.length; i++) {
+            bind(parents[i]);
+        }
+
+        /* Tapping anywhere outside a menu closes it. */
+        document.addEventListener('click', function (e) {
+            var el = e.target;
+            while (el && el !== document) {
+                if (el.classList && el.classList.contains('dropdown')) return;
+                el = el.parentNode;
+            }
+            closeAll();
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
+        initNavDropdowns();
+
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'theme-toggle';
