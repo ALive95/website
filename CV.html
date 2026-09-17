@@ -35,9 +35,8 @@
         }
 
         .download-pdf {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            width: fit-content;
+            margin: 0 0 1.5rem auto;
             background: var(--btn);
             color: var(--text);
             padding: 12px 20px;
@@ -53,7 +52,6 @@
             gap: 8px;
             box-shadow: 0 2px 10px var(--shadow);
             transition: all 0.3s ease;
-            z-index: 1000;
         }
 
         .download-pdf:hover {
@@ -323,22 +321,10 @@
                 margin-left: 0;
                 margin-top: 3px;
             }
-            
-            .download-pdf {
-                position: static;
-                display: flex;
-                width: fit-content;
-                margin: 0 0 20px auto;
-            }
         }
     </style>
 </head>
 <body>
-    <a href="#" class="download-pdf" onclick="downloadPDF()">
-        <i class="fas fa-file-pdf"></i>
-        Download PDF
-    </a>
-
     <header class="site-header">
             <div class="site-header-inner">
                 <h1><a href="index.html">Lorenzo Liverani</a></h1>
@@ -359,6 +345,11 @@
                 </nav>
             </div>
         </header>
+
+    <a href="#" class="download-pdf" onclick="downloadPDF()">
+        <i class="fas fa-file-pdf"></i>
+        Download PDF
+    </a>
 
     <div class="cv-content">
 
